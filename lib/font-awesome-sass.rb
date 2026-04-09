@@ -6,8 +6,6 @@ module FontAwesome
           register_rails_engine
         elsif sprockets?
           register_sprockets
-        elsif deprecated_sass?
-          ::Sass.load_paths << stylesheets_path
         end
       end
 
@@ -34,11 +32,6 @@ module FontAwesome
 
       def rails?
         defined?(::Rails)
-      end
-
-      def deprecated_sass?
-        # The deprecated `sass` gem:
-        defined?(::Sass) && ::Sass.respond_to?(:load_paths)
       end
 
       private
